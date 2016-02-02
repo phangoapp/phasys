@@ -11,7 +11,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "symfony/process": "@stable"
+        "symfony/process": "@stable",
+        "guzzlehttp/guzzle": "~6.0"
     },
     "autoload": {
         "psr-4": {

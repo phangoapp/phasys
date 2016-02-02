@@ -54,6 +54,8 @@ class Daemon {
     
     /**
     * Method for load the daemon script from a normal php script accesible via webserver
+    * 
+    * With this method you can load a process via http. You need know that the request where Daemon::load is placed die when is called. You need make all needed tasks before.
     */
     
     public function load($command)
@@ -77,7 +79,6 @@ class Daemon {
                 echo json_encode(array('ERROR' => 0, 'MESSAGE' => 'Running daemon...', 'PROGRESS' => 0));
 
                 die;
-                #return true;
                 
 
             }
