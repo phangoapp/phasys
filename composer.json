@@ -1,0 +1,18 @@
+{
+    "name": "phangoapp/phasys",
+    "description": "A simple class that is useful for make an executable how daemon",
+
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Antonio de la Rosa",
+            "email": "webmaster@web-t-sys.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "PhangoApp\\PhaSys\\": "src"
+        }
+    }
+}
