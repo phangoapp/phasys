@@ -46,7 +46,7 @@ class Daemon {
              $sid = posix_setsid();
              $this->pid=getmypid();
              
-             $this->log(array('ERROR' => 0, 'MESSAGE' => 'Running task...', 'PROGRESS' => 0));
+             $this->log(array('ERROR' => 0, 'MESSAGE' => 'Running daemon...', 'PROGRESS' => 0));
             
         }
     
@@ -72,8 +72,13 @@ class Daemon {
 
                 //The process is loaded
 
-                return true;
-            
+                //Return 
+                
+                echo json_encode(array('ERROR' => 0, 'MESSAGE' => 'Running daemon...', 'PROGRESS' => 0));
+
+                die;
+                #return true;
+                
 
             }
         });
@@ -83,9 +88,13 @@ class Daemon {
                        
             $this->txt_error=$process->getOutput();
             
-            return false;
+            echo json_encode(array('ERROR' => 0, 'MESSAGE' => 'Running daemon...', 'PROGRESS' => 0));
+
+            die;
             
         }
+        
+        
 
     }
     
