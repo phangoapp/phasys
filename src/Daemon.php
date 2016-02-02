@@ -2,7 +2,7 @@
 
 namespace PhangoApp\PhaSys;
 use PhangoApp\PhaModels\Webmodel;
-use PhangoApp
+use Symfony\Component\Process\Process;
 
 define('ERROR_UPDATING_TASK', 1);
 define('ERROR_FORK', 2);
@@ -18,6 +18,8 @@ class Daemon {
     */
     
     public $pid=0;
+    
+    public $txt_error='';
 
     public function init()
     {
@@ -48,6 +50,43 @@ class Daemon {
             
         }
     
+    }
+    
+    /**
+    * Method for load the daemon script from a normal php script accesible via webserver
+    */
+    
+    public function load($command)
+    {
+        
+        $process = new Process($command);
+        
+        $process->run(function ($type, $buffer) {
+
+            $arr_buffer=json_decode($buffer, true);
+
+            settype($arr_buffer['PID'], 'integer');
+
+            if($arr_buffer['PID']>0)
+            {
+
+                //The process is loaded
+
+                return true;
+            
+
+            }
+        }
+        
+        if(!$process->isSuccessful())
+        {
+                       
+            $this->txt_error=$process->getOutput();
+            
+            return false;
+            
+        }
+
     }
     
     /**

@@ -10,6 +10,9 @@
         }
     ],
     "minimum-stability": "dev",
+    "require": {
+        "symfony/process": "@stable",
+    },
     "autoload": {
         "psr-4": {
             "PhangoApp\\PhaSys\\": "src"
