@@ -76,7 +76,7 @@ class Daemon {
             
 
             }
-        }
+        });
         
         if(!$process->isSuccessful())
         {
