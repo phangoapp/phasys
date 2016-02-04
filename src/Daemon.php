@@ -106,7 +106,9 @@ class Daemon {
     public function log($arr_data)
     {
         
-        Webmodel::$model['log_exec']->insert(['pid' => $this->pid, 'log' => json_encode($arr_data)]);
+        Webmodel::$model['log_exec']->fields_to_update=['pid', 'log'];
+        
+        Webmodel::$model['log_exec']->insert(['pid' => $this->pid, 'log' => $arr_data]);
         
     }
 

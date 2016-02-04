@@ -7,8 +7,8 @@ $log=new Webmodel('log_exec');
 
 $log->register('pid', new CoreFields\IntegerField(), true);
 
-$log->register('command', new CoreFields\CharField(), true);
+$log->register('command', new CoreFields\CharField());
 
-$log->register('log', new CoreFields\TextField(), true);
+$log->register('log', new CoreFields\SerializeField(new CoreFields\TextField()), true);
 
 ?>
