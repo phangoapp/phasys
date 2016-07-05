@@ -67,7 +67,7 @@ class Daemon {
     * 
     */
     
-    public function load($command, $stdout_file='/dev/null')
+    public function load($command, $stdout_file='/dev/null', $callback='')
     {
         /*
         exec($command.' > '.$stdout_file.' 2>&1', $output, $return_var);
@@ -112,7 +112,18 @@ class Daemon {
                 
                 $status=proc_get_status($process);
                 
-                echo json_encode(array('ERROR' => 0, 'MESSAGE' => 'Running daemon...', 'FATHER_PID' => $status['pid']));
+                if($callback=='')
+                {
+                    
+                    echo json_encode(array('ERROR' => 0, 'MESSAGE' => 'Running daemon...', 'FATHER_PID' => $status['pid']));
+                    
+                }
+                else
+                {
+                    
+                    $callback($status['pid']);
+                    
+                }
                 
                 if(!$status['running'])
                 {
